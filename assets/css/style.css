@@ -43,6 +43,10 @@ h2{
     top: 210px;
     font-weight: 100;
 }
+/* Game stats section */
 .container-1 {
-
+    padding: 30px
+}
+.pad {
+    padding:5px
 }
