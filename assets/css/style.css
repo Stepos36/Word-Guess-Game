@@ -5,7 +5,7 @@ body {
 .container-header {
     max-width:960px;
     margin: 20px auto;
-    height: 450px;
+    height: 404px;
 }
 .header {
     position: relative;
@@ -15,6 +15,7 @@ body {
     height: 400px;
     opacity: 0.6;
     position: absolute;
+    border-radius: 30px
 }
 .main-sign {
     background-image: -webkit-linear-gradient(#378DBC 0%, #B6E8F1 46%, #ffffff 50%, #32120E 54%, #FFC488 58%, #582C11 90%, #EC9B4E 100%);
@@ -45,8 +46,19 @@ h2{
 }
 /* Game stats section */
 .container-1 {
-    padding: 30px
+    padding: 30px;
+    padding-top: 10px
 }
 .pad {
     padding:5px
+}
+.col1 {
+    height:600px;
+    background-color: #0D1244;
+    border: 2px solid #9097C1
+}
+.row1 {
+    height: 284px;
+    background-color: #0D1244;
+    border: 2px solid #9097C1
 }
