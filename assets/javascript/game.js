@@ -1,12 +1,15 @@
 //Random word gets picked from an existing array 
-var words = ['LOST', 'Dexter', 'Breaking Bad', 'Big bang theory', 'Scrubs', 'Westworld', 'Game of thrones', 'Sons of anarchy', 'Friends']
+var words = ['LOST', 'Dexter', 'Breaking' + '\n' + 'Bad', 'Big' + '\n' + 'bang' + '\n' + 'theory', 'Scrubs', 'Westworld', 'Game' + '\n' + 'of' + '\n' + 'thrones', 'Sons' + '\n' + 'of' + '\n' + 'anarchy', 'Friends']
 var randNum = Math.floor(Math.random() * words.length)
-var chosenWord = words[randNum]
+var chosenWord = words[randNum].toLowerCase()
 var underScore = []
 var rightWord = []
 var wrongWord = []
+var remainingLetters = [];
+var remainingGuesses = 6;
 var objUnderScore = document.getElementsByClassName("underscore")
 var objWrongWord = document.getElementsByClassName("wrongletters")
+var objGuessesLeft = document.getElementsByClassName("guessesleft")
 console.log(chosenWord)
 //Generate a required amound of underscores in the letter row
 function generateUnderscores() {
@@ -18,31 +21,35 @@ function generateUnderscores() {
 
 //Pick up the key user pressed
 document.addEventListener('keypress', function(event) {
-   var keyCode = event.keyCode;
-   var keyWord = String.fromCharCode(keyCode);
+   var keyWord = event.key
    console.log(keyWord)
 //Compare the key user pressed with the word we have
     for (var j=0; j<chosenWord.length;j++) {
         if (chosenWord[j] === keyWord) {
-        //Add our letter to the right guess array
-            
-            
-        //Replace the underscore with the right key
-            underScore[j] = keyWord;
-            objUnderScore[0].innerHTML = underScore.join(' ')
-           
+            if (keyWord !== underScore[j]) {
+                rightWord.push(keyWord);
+                remainingLetters--;
+            }
+            //Replace the underscore with the right key
+            underScore[j] = keyWord
+            objUnderScore[0].innerHTML = underScore.join(' ').toUpperCase();
         }
-        else if (chosenWord[j] !== keyWord) {
-            function wrongLetter() {
-                wrongWord.push(keyWord);
-                objWrongWord[0].innerHTML = wrongWord.join(' ')
-                console.log(wrongWord)}
-        };
-        
-            
-        
     }
-    wrongLetter()
+    if (wrongWord.includes(keyWord)) {
+        alert('You already guessed that!')
+    }
+    else if (underScore.includes(keyWord)) {
+
+    }
+    else {
+        wrongWord.push(keyWord);
+        remainingGuesses--;
+        objWrongWord[0].innerHTML = wrongWord.join(' ').toUpperCase();
+        objGuessesLeft[0].innerHTML = remainingGuesses;
+        if (remainingGuesses === 0) {
+            alert("You Lost! Try again! The word was: " + chosenWord.toUpperCase());
+        }
+    }
 }) 
 
 //Add the wrong letter to the wrong letter section
