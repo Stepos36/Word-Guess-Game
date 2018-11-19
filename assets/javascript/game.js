@@ -5,8 +5,9 @@ var chosenWord = words[randNum].toLowerCase()
 var underScore = []
 var rightWord = []
 var wrongWord = []
-var remainingLetters = [];
+var remainingLetters;
 var remainingGuesses = 6;
+remainingLetters = chosenWord.length
 var objUnderScore = document.getElementsByClassName("underscore")
 var objWrongWord = document.getElementsByClassName("wrongletters")
 var objGuessesLeft = document.getElementsByClassName("guessesleft")
@@ -18,7 +19,6 @@ function generateUnderscores() {
     }
     return underScore;
 }
-
 //Pick up the key user pressed
 document.addEventListener('keypress', function(event) {
    var keyWord = event.key
@@ -29,18 +29,20 @@ document.addEventListener('keypress', function(event) {
             if (keyWord !== underScore[j]) {
                 rightWord.push(keyWord);
                 remainingLetters--;
+                console.log(remainingLetters)
             }
             //Replace the underscore with the right key
             underScore[j] = keyWord
             objUnderScore[0].innerHTML = underScore.join(' ').toUpperCase();
         }
     }
+    //If the same letter is guessed
     if (wrongWord.includes(keyWord)) {
         alert('You already guessed that!')
     }
     else if (underScore.includes(keyWord)) {
-
     }
+    //If entered letter is wrong - it goes to the wrongWord array and we lose an attempt
     else {
         wrongWord.push(keyWord);
         remainingGuesses--;
@@ -49,6 +51,9 @@ document.addEventListener('keypress', function(event) {
         if (remainingGuesses === 0) {
             alert("You Lost! Try again! The word was: " + chosenWord.toUpperCase());
         }
+    }
+    if (remainingLetters === 0) {
+        alert("You won!");
     }
 }) 
 
