@@ -65,7 +65,7 @@ h3 {
     padding: 20px
 }
 .col2 {
-    height:660px;
+    height:900px;
     background-color: #0D1244;
     border: 2px solid #9097C1
 }
@@ -78,4 +78,17 @@ p, div {
     text-align: center;
     color: white;
     margin-bottom: 0;
+}
+/* Text colors */
+.underscore {
+    color: #34C131;
+    font-size: 50px
+}
+.guessesleft {
+    color: #C1C12A;
+    font-size: 50px
+}
+.wrongletters {
+    color: #C12000;
+    font-size: 50px
 }
