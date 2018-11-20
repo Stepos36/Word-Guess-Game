@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet"> 
     <script type="text/javascript" src="assets/javascript/game.js"></script>
     <title>
         HANGMAN | Game
@@ -31,6 +31,10 @@
                     <div class="row col1 jumbotron">
                             <img class="show-image" src="https://i.ytimg.com/vi/JU4avUzeI8g/maxresdefault.jpg">
                     </div>
+                    <div class="row col1 jumbotron">
+                        <p class="wide">Wins</p>
+                        <div class="wins"><script>document.write('---')</script></div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
@@ -38,8 +42,6 @@
                     <div class="row">
                         <div class="col-md-12 col2">
                             <p>Press any key to get started!</p>
-                            <p>Wins:</p>
-                            <div class="wins"></div>
                             <p>Current word:</p>
                             <div class="underscore"><script>document.write(underScore.join(" "))</script></div>
                             <p>Number of guesses remaining:</p>
