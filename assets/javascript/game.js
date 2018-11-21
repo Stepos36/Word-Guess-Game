@@ -62,6 +62,7 @@ var objUnderScore = document.getElementsByClassName("underscore");
 var objWrongWord = document.getElementsByClassName("wrongletters");
 var objGuessesLeft = document.getElementsByClassName("guessesleft");
 var objWins = document.getElementsByClassName("wins");
+var objImage = document.getElementsByClassName("show-image")
 
 
 var wins = 0;
@@ -71,7 +72,7 @@ newGame();
 
 //Pick up the key user pressed
 document.addEventListener('keypress', function(event) {
-    let keyWord = event.key;
+    var keyWord = event.key;
     console.log(keyWord)
  //Compare the key user pressed with the word we have
     for (var j=0; j<chosenWord.length;j++) {
@@ -98,17 +99,23 @@ document.addEventListener('keypress', function(event) {
        objWrongWord[0].innerHTML = wrongWord.join(' ').toUpperCase();
        objGuessesLeft[0].innerHTML = remainingGuesses;
        if (remainingGuesses === 0) {
-           alert("You Lost! Try again! The word was: " + chosenWord.toUpperCase());
-           objWrongWord[0].innerHTML = wrongWord;
-           newGame();
+            alert("You Lost! Try again! The word was: " + chosenWord.toUpperCase());
+            newGame()
+            objUnderScore[0].innerHTML = underScore.join(' ');
+            objGuessesLeft[0].innerHTML = remainingGuesses;
+            objWrongWord[0].innerHTML = ('none');
+            objWins[0].innerHTML = ('---');
+          ;
        }
     }
     if (underScore.join('') === chosenWord) {
        alert("You won!");
        wins++;
        objWins[0].innerHTML = wins;  
-       newGame()
-       objWrongWord[0].innerHTML = wrongWord;
+       newGame();
+       objUnderScore[0].innerHTML = underScore.join(' ');
+       objGuessesLeft[0].innerHTML = remainingGuesses;
+       objWrongWord[0].innerHTML = ('none');
        image(unknownWord.wordPicture);
 
     }
@@ -121,9 +128,12 @@ function newGame() {
     randNum = Math.floor(Math.random() * words.length);
     unknownWord = words[randNum];
     chosenWord = unknownWord.wordName.toLowerCase();
+    console.log(chosenWord)
     remainingGuesses = 8;
     remainingLetters = chosenWord.length;
-    underScore = []
+    underScore = [];
+    rightWord = [];
+    wrongWord = [];
     function generateUnderscores() {
         for (var i=0; i<chosenWord.length;i++) {
             underScore[i] = "_"
@@ -131,11 +141,10 @@ function newGame() {
         return underScore;
     }
     generateUnderscores()
-    wrongWord = []
-    objUnderScore.innerHTML = underScore.join(' ')
+    console.log(wrongWord)
+    console.log(underScore)
 }
-function image(wordPicture) {
-    img = document.getElementsByClassName("show-image");
-    img.src = wordPicture;
+function image(imgName) {
+    picture= objImage;
+    picture.src=imgName
 }
-console.log(chosenWord)
