@@ -55,6 +55,8 @@ var losePic = 'assets/images/lose.jpg'
 
 var loseSign = 'You lost! Press RESTART to start again' 
 
+var test = 'assets/audio/got.mp3'
+
 var randNum;
 var unknownWord;
 var chosenWord;
@@ -167,7 +169,4 @@ function image(picPath) {
 }
 function sign(signPath) {
     objSign[0].innerHTML = signPath;
-}
-function audio(songPath) {
-    play(songPath)
 }
