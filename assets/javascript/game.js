@@ -104,26 +104,26 @@ document.addEventListener('keypress', function(event) {
             alert("You Lost! Try again! The word was: " + chosenWord.toUpperCase());
             image(losePic)
             objNext[0].innerHTML = ('Restart') 
+            wins = 0
+            objWins[0].innerHTML = wins
             objNext[0].addEventListener("click", function nextLevelLose() {
             newGame()
             image(standbyPic)
             objUnderScore[0].innerHTML = underScore.join(' ');
             objGuessesLeft[0].innerHTML = remainingGuesses;
             objWrongWord[0].innerHTML = ('none');
-            objWins[0].innerHTML = ('---');
-            wins = 0
             }) ;
        }
     }
     if (underScore.join('') === chosenWord) {
        alert("You won!");
        wins++;
-       image(unknownWord.wordPicture)
        objWins[0].innerHTML = wins; 
+       image(unknownWord.wordPicture)
        objNext[0].innerHTML = ('Next word!'); 
        objNext[0].addEventListener("click", function nextLevelWin() {
-            newGame();
-            image(standbyPic)
+           newGame();
+           image(standbyPic)
             objUnderScore[0].innerHTML = underScore.join(' ');
             objGuessesLeft[0].innerHTML = remainingGuesses;
             objWrongWord[0].innerHTML = ('none');
