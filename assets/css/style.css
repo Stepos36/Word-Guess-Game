@@ -105,3 +105,10 @@ p, div {
     width:400px;
     margin: 0 auto;
 }
+.nextword:hover {
+    font-size: 60px;
+    text-align: center;
+    color:white;
+    width:400px;
+    margin: 0 auto;
+}
