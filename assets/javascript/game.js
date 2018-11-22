@@ -49,8 +49,10 @@ var words = [   {   wordSign: 'LOST(2004-2010)',
                     wordPicture: 'assets/images/ahs.jpg',
                     wordMusic: '',
                 },
-                {   lose: 'assets/images/lose.jpg'}
             ]
+var standbyPic ='assets/images/standby.jpg'
+var losePic = 'assets/images/lose.jpg'
+
 var randNum;
 var unknownWord;
 var chosenWord;
@@ -100,10 +102,11 @@ document.addEventListener('keypress', function(event) {
        objGuessesLeft[0].innerHTML = remainingGuesses;
        if (remainingGuesses === 0) {
             alert("You Lost! Try again! The word was: " + chosenWord.toUpperCase());
-            image(words[(words.length-1)].lose)
+            image(losePic)
             objNext[0].innerHTML = ('Restart') 
-            objNext[0].addEventListener("click", function nextLevel() {
+            objNext[0].addEventListener("click", function nextLevelLose() {
             newGame()
+            image(standbyPic)
             objUnderScore[0].innerHTML = underScore.join(' ');
             objGuessesLeft[0].innerHTML = remainingGuesses;
             objWrongWord[0].innerHTML = ('none');
@@ -118,8 +121,9 @@ document.addEventListener('keypress', function(event) {
        image(unknownWord.wordPicture)
        objWins[0].innerHTML = wins; 
        objNext[0].innerHTML = ('Next word!'); 
-       objNext[0].addEventListener("click", function nextLevel() {
+       objNext[0].addEventListener("click", function nextLevelWin() {
             newGame();
+            image(standbyPic)
             objUnderScore[0].innerHTML = underScore.join(' ');
             objGuessesLeft[0].innerHTML = remainingGuesses;
             objWrongWord[0].innerHTML = ('none');
