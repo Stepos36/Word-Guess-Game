@@ -31,6 +31,7 @@ body {
     font-size: 160px;
     font-weight:900;
     width:100%;
+    cursor: default;
 }
 h2{
     font-family: 'Pacifico', cursive;
@@ -43,10 +44,15 @@ h2{
     right: 100px;
     top: 170px;
     font-weight: 100;
+    cursor: default;
 }
 h3 {
     color:#fff;
     text-align: center;
+}
+.sign-show-name {
+    color: #C3FFBE;
+    font-size: 50px
 }
 /* Game stats section */
 .container-1 {
@@ -78,10 +84,12 @@ p, div {
     text-align: center;
     color: white;
     margin-bottom: 0;
+    cursor: default;
 }
 /* Text colors */
 .underscore {
     color: #34C131;
+    cursor: default;
 }
 .guessesleft {
     color: #C1C12A;
@@ -111,4 +119,5 @@ p, div {
     color:white;
     width:400px;
     margin: 0 auto;
+    cursor: pointer;
 }

@@ -4,7 +4,7 @@ var words = [   {   wordSign: 'LOST(2004-2010)',
                     wordPicture: 'assets/images/lost.jpg',
                     wordMusic: '',
                 },
-                {   wordSign: 'Dexter(2006-2013',
+                {   wordSign: 'Dexter(2006-2013)',
                     wordName: 'Dexter',
                     wordPicture: 'assets/images/dexter.jpg',
                     wordMusic: '',
@@ -19,7 +19,7 @@ var words = [   {   wordSign: 'LOST(2004-2010)',
                     wordPicture: 'assets/images/bbt.jpg',
                     wordMusic: '',
                 },
-                {   wordSign: 'Scrubs(2001-2010',
+                {   wordSign: 'Scrubs(2001-2010)',
                     wordName: 'Scrubs',
                     wordPicture: 'assets/images/scrubs.jpg',
                     wordMusic: '',
@@ -34,7 +34,7 @@ var words = [   {   wordSign: 'LOST(2004-2010)',
                     wordPicture: 'assets/images/got.jpg',
                     wordMusic: '',
                 },
-                {   wordSign: 'Sons of anarchy(2008-2014',
+                {   wordSign: 'Sons of anarchy(2008-2014)',
                     wordName: 'Sons_of_anarchy',
                     wordPicture: 'assets/images/soa.jpg',
                     wordMusic: '',
@@ -53,6 +53,8 @@ var words = [   {   wordSign: 'LOST(2004-2010)',
 var standbyPic ='assets/images/standby.jpg'
 var losePic = 'assets/images/lose.jpg'
 
+var loseSign = 'You lost! Press RESTART to start again' 
+
 var randNum;
 var unknownWord;
 var chosenWord;
@@ -61,12 +63,14 @@ var rightWord = [];
 var wrongWord = [];
 var remainingLetters;
 var remainingGuesses;
+
 var objUnderScore = document.getElementsByClassName("underscore");
 var objWrongWord = document.getElementsByClassName("wrongletters");
 var objGuessesLeft = document.getElementsByClassName("guessesleft");
 var objWins = document.getElementsByClassName("wins");
 var objImage = document.getElementsByClassName("show-image-1")
 var objNext = document.getElementsByClassName("nextword")
+var objSign = document.getElementsByClassName("sign-show-name")
 
 var wins = 0;
 
@@ -103,27 +107,32 @@ document.addEventListener('keypress', function(event) {
        if (remainingGuesses === 0) {
             alert("You Lost! Try again! The word was: " + chosenWord.toUpperCase());
             image(losePic)
+            sign(loseSign)
             objNext[0].innerHTML = ('Restart') 
             wins = 0
             objWins[0].innerHTML = wins
             objNext[0].addEventListener("click", function nextLevelLose() {
-            newGame()
-            image(standbyPic)
-            objUnderScore[0].innerHTML = underScore.join(' ');
-            objGuessesLeft[0].innerHTML = remainingGuesses;
-            objWrongWord[0].innerHTML = ('none');
-            }) ;
-       }
+                newGame()
+                image(standbyPic)
+                sign('')
+                objUnderScore[0].innerHTML = underScore.join(' ');
+                objGuessesLeft[0].innerHTML = remainingGuesses;
+                objWrongWord[0].innerHTML = ('none');
+                objNext[0].innerHTML = ('');
+    })
     }
+    };
     if (underScore.join('') === chosenWord) {
        alert("You won!");
        wins++;
        objWins[0].innerHTML = wins; 
-       image(unknownWord.wordPicture)
+       image(unknownWord.wordPicture);
+       sign(unknownWord.wordSign);
        objNext[0].innerHTML = ('Next word!'); 
        objNext[0].addEventListener("click", function nextLevelWin() {
-           newGame();
-           image(standbyPic)
+            newGame();
+            image(standbyPic);
+            sign('')
             objUnderScore[0].innerHTML = underScore.join(' ');
             objGuessesLeft[0].innerHTML = remainingGuesses;
             objWrongWord[0].innerHTML = ('none');
@@ -155,4 +164,10 @@ function newGame() {
 }
 function image(picPath) {
     objImage[0].src = picPath;
+}
+function sign(signPath) {
+    objSign[0].innerHTML = signPath;
+}
+function audio(songPath) {
+    play(songPath)
 }
