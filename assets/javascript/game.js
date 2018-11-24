@@ -49,13 +49,32 @@ var words = [   {   wordSign: 'LOST(2004-2010)',
                     wordPicture: 'assets/images/ahs.jpg',
                     wordMusic: '',
                 },
+                {   wordSign: 'The Walking Dead(2010-present)',
+                    wordName: 'The_Walking_Dead',
+                    wordPicture: 'assets/images/twd.jpg',
+                    wordMusic: '',
+                },
+                {   wordSign: 'House of cards(2013-2018)',
+                    wordName: 'House_of_cards',
+                    wordPicture: 'assets/images/hoc.jpg',
+                    wordMusic: '',
+                },
+                {   wordSign: 'Supernatural(2005-present)',
+                    wordName: 'Supernarural',
+                    wordPicture: 'assets/images/sn.jpg',
+                    wordMusic: '',
+                },
+                {   wordSign: 'Stranger Things(2016-present)',
+                    wordName: 'Stranger_things',
+                    wordPicture: 'assets/images/st.jpg',
+                    wordMusic: '',
+                },
             ]            
 var standbyPic ='assets/images/standby.jpg'
 var losePic = 'assets/images/lose.jpg'
 
 var loseSign = 'You lost! Press RESTART to start again' 
-
-var test = 'assets/audio/got.mp3'
+var winSign = 'You won! Press NEXT WORD to continue'
 
 var randNum;
 var unknownWord;
@@ -81,7 +100,8 @@ newGame();
 
 //Pick up the key user pressed
 document.addEventListener('keypress', function(event) {
-    var keyWord = event.key;
+    var keyLetter = event.key;
+    var keyWord = keyLetter.toLowerCase()
     console.log(keyWord)
  //Compare the key user pressed with the word we have
     for (var j=0; j<chosenWord.length;j++) {
@@ -133,7 +153,7 @@ document.addEventListener('keypress', function(event) {
        wins++;
        objWins[0].innerHTML = wins; 
        image(unknownWord.wordPicture);
-       sign(unknownWord.wordSign);
+       sign(unknownWord.wordSign +'<br/>'+ winSign);
        objNext[0].innerHTML = ('Next word!'); 
        objNext[0].addEventListener("click", function nextLevelWin() {
             newGame();
