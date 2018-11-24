@@ -1,4 +1,4 @@
-//Random word gets picked from an existing array 
+//An array of objects with necessary properties 
 var words = [   {   wordSign: 'LOST(2004-2010)',
                     wordName: 'LOST',
                     wordPicture: 'assets/images/lost.jpg',
@@ -49,7 +49,7 @@ var words = [   {   wordSign: 'LOST(2004-2010)',
                     wordPicture: 'assets/images/ahs.jpg',
                     wordMusic: '',
                 },
-            ]
+            ]            
 var standbyPic ='assets/images/standby.jpg'
 var losePic = 'assets/images/lose.jpg'
 
@@ -66,6 +66,7 @@ var wrongWord = [];
 var remainingLetters;
 var remainingGuesses;
 
+//DOM variables that refer JavaScript to html objects via class names
 var objUnderScore = document.getElementsByClassName("underscore");
 var objWrongWord = document.getElementsByClassName("wrongletters");
 var objGuessesLeft = document.getElementsByClassName("guessesleft");
@@ -98,9 +99,11 @@ document.addEventListener('keypress', function(event) {
     if (wrongWord.includes(keyWord)) {
         alert('You already guessed that!')
     }
+    //If the same right letter is guessed do nothing
     else if (underScore.includes(keyWord)) {
     }
-    //If entered letter is wrong - it goes to the wrongWord array and we lose an attempt
+    //If entered letter is wrong - it goes to the wrongWord array and we lose an attempt. Stats update, 'You lose' picture appears and 
+    //the 'Restart' button appears
     else {
        wrongWord.push(keyWord);
        remainingGuesses--;
@@ -124,6 +127,7 @@ document.addEventListener('keypress', function(event) {
     })
     }
     };
+    //If all letters of the right word are correctly guessed, tv show picture appears, stats update and 'Next Word' button appear
     if (underScore.join('') === chosenWord) {
        alert("You won!");
        wins++;
@@ -142,10 +146,6 @@ document.addEventListener('keypress', function(event) {
     })
     }
  }) 
-
-
-//Add the wrong letter to the wrong letter section
-
 function newGame() {
     randNum = Math.floor(Math.random() * words.length);
     unknownWord = words[randNum];
